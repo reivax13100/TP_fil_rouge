@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: posts-deployment
+#  labels:
+#    app: posts-label
+spec:
+  replicas: 1  # Le nombre de répliques que vous souhaitez déployer
+  selector:
+    matchLabels:
+      app: posts-label
+  template:
+    metadata:
+      labels:
+        app: posts-label
+    spec:
+      containers:
+        - name: posts-container
+          image: posts
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 4000

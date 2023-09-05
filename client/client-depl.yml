@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-deployment
+spec:
+  replicas: 1  # Le nombre de répliques que vous souhaitez déployer
+  selector:
+    matchLabels:
+      app: client-label
+  template:
+    metadata:
+      labels:
+        app: client-label
+    spec:
+      containers:
+        - name: client-container
+          image: nginx
+          ports:
+            - containerPort: 3000
+
