@@ -1,20 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: client-deployment
+  name: query-deployment
+  labels:
+    app: query-label
 spec:
   replicas: 1  # Le nombre de répliques que vous souhaitez déployer
   selector:
     matchLabels:
-      app: client-label
+      app: query-label
   template:
     metadata:
       labels:
-        app: client-label
+        app: query-label
     spec:
       containers:
-        - name: client-container
-          image: nginx
+        - name: query-label
+          image: query
+          imagePullPolicy: Never
           ports:
-            - containerPort: 3000
-
+            - containerPort: 4002

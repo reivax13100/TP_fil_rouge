@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: event-bus-deployment
+  labels:
+    app: event-bus-label
+spec:
+  replicas: 1  # Le nombre de répliques que vous souhaitez déployer
+  selector:
+    matchLabels:
+      app: event-bus-label
+  template:
+    metadata:
+      labels:
+        app: event-bus-label
+    spec:
+      containers:
+        - name: event-bus-container
+          image: event-bus
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 4005

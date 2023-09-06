@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: comments-deployment
+  labels:
+    app: comments-label
+spec:
+  replicas: 1  # Le nombre de répliques que vous souhaitez déployer
+  selector:
+    matchLabels:
+      app: comments-label
+  template:
+    metadata:
+      labels:
+        app: comments-label
+    spec:
+      containers:
+        - name: comments-container
+          image: comments
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 4001

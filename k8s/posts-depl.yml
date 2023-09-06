@@ -2,8 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: posts-deployment
-#  labels:
-#    app: posts-label
+  labels:
+    app: posts-label
 spec:
   replicas: 1  # Le nombre de répliques que vous souhaitez déployer
   selector:
